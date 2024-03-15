@@ -1,8 +1,37 @@
+"use client";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+
+  const [tags, setTags] = useState([""]);
+
+  // Update tags state when post.tag changes
+  useEffect(() => {
+    setTags(post.tag || [""]);
+  }, [post.tag]);
+
+  const handleTagChange = (index, value) => {
+    const newTags = [...tags];
+    newTags[index] = value;
+    setTags(newTags);
+    setPost({ ...post, tag: newTags });
+  };
+
+  const addTag = () => {
+    setTags([...tags, ""]);
+  };
+
+  const removeTag = (index) => {
+    const newTags = [...tags];
+    newTags.splice(index, 1);
+    setTags(newTags);
+    setPost({ ...post, tag: newTags });
+  };
+
   return (
-    <section className='w-full max-w-full flex-start flex-col'>
+    <section className='w-full max-w-full flex-start flex-col mb-7'>
       <h1 className='head_text text-left'>
         <span className='blue_gradient'>{type} Post</span>
       </h1>
@@ -26,6 +55,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             placeholder='Write your post here'
             required
             className='form_textarea '
+            style={{caretColor: "black"}}
           />
         </label>
 
@@ -36,14 +66,37 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
               (#product, #webdevelopment, #idea, etc.)
             </span>
           </span>
-          <input
-            value={post.tag}
-            onChange={(e) => setPost({ ...post, tag: e.target.value })}
-            type='text'
-            placeholder='#Tag'
-            required
-            className='form_input'
-          />
+          <div>
+            {tags.map((tag, index) => (
+              <input
+                key={index}
+                value={tag}
+                onChange={(e) => handleTagChange(index, e.target.value)}
+                type='text'
+                placeholder='#Tag'
+                required
+                className='form_input'
+              />
+            ))}
+            <div className="flex gap-2 mx-3 mt-3 -mb-4">
+              <button
+                type="button"
+                onClick={addTag}
+                className='px-5 py-1.5 text-sm bg-green-500 rounded-full text-white'
+              >
+                Add tag
+              </button>
+              {tags.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeTag(tags.length - 1)}
+                  className='px-5 py-1.5 text-sm bg-red-500 rounded-full text-white'
+                >
+                  Remove tag
+                </button>
+              )}
+            </div>
+          </div>
         </label>
 
         <div className='flex-end mx-3 mb-5 gap-4'>

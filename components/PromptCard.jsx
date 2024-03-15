@@ -6,6 +6,9 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
+
+  const colors = ["blue", "green", "orange"]
+
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
@@ -66,12 +69,18 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
       </div>
 
       <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt}</p>
-      <p
-        className='font-inter text-sm blue_gradient cursor-pointer'
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        #{post.tag}
-      </p>
+      <div className="flex flex-wrap gap-3">
+        {post.tag.map(tag => (
+          <p
+            key={post.tag.indexOf(tag)}
+            className={`font-inter text-sm ${colors[post.tag.indexOf(tag) % colors.length]}_gradient cursor-pointer`}
+            onClick={() => handleTagClick && handleTagClick(tag)}
+          >
+            #{tag}
+          </p>
+        ))}
+
+      </div>
 
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>

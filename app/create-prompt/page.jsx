@@ -11,40 +11,37 @@ const CreatePrompt = () => {
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({ prompt: "", tag: "" });
-
-  // useEffect(() => {
-  //   console.log(session)
-  //   if (!(session?.user.id))
-  //   {
-  //     router.push("/signin");
-  //   }
-  // }, [])
-  
+  const [post, setPost] = useState({ prompt: "", tag: [""] }); 
 
   const createPrompt = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
+      // Modify tags by removing '#' and white spaces
+      const modifiedTags = post.tag.map(tag => tag.replace("#", "").replace(/\s/g, "").toLowerCase());
+
       const response = await fetch("/api/prompt/new", {
         method: "POST",
         body: JSON.stringify({
           prompt: post.prompt,
           userId: session?.user.id,
-          tag: post.tag.replace("#", "").toLowerCase(),
+          tag: modifiedTags, // Use modified tags array
         }),
       });
 
       if (response.ok) {
         router.push("/");
+      } else {
+        console.error(response);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <Form

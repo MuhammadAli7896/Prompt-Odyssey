@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 import Form from "@components/Form";
 
@@ -11,15 +10,7 @@ const UpdatePrompt = () => {
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
 
-  const { data: session } = useSession();
-
-  // useEffect(() => {    
-  //   if (!(session?.user.id)) {
-  //     router.push("/signin");
-  //   }
-  // }, [])
-
-  const [post, setPost] = useState({ prompt: "", tag: "", });
+  const [post, setPost] = useState({ prompt: "", tag: [""] });
   const [submitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -43,19 +34,25 @@ const UpdatePrompt = () => {
     if (!promptId) return alert("Missing PromptId!");
 
     try {
+
+      const modifiedTags = post.tag.map(tag => tag.replace("#", "").replace(/\s/g, "").toLowerCase());
+
       const response = await fetch(`/api/prompt/${promptId}`, {
         method: "PATCH",
         body: JSON.stringify({
           prompt: post.prompt,
-          tag: post.tag.replace("#", "").toLowerCase(),
+          tag: modifiedTags,
         }),
       });
 
       if (response.ok) {
         router.push("/");
       }
+      else {
+        console.error(response)
+      }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsSubmitting(false);
     }
