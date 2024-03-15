@@ -108,9 +108,14 @@ const Nav = () => {
             )}
           </div>
         ) : (
-          <>
-            <button className="black_btn"><Link href="/signin">Sign in</Link></button>
-          </>
+            <>
+              <div className="flex gap-3 md:gap-5">
+                <Link href='/create-prompt' className='black_btn'>
+                  Create Post
+                </Link>
+                <button className="black_btn"><Link href="/signin">Sign in</Link></button>
+              </div>
+            </>
         )}
       </div>
     </nav>
