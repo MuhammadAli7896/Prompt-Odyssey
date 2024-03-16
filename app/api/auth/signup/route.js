@@ -20,7 +20,6 @@ export const POST = async (request) => {
             });
 
             user = await user.save();
-
             if (user) {
                 return new Response({
                     _id: user._id,
@@ -38,6 +37,7 @@ export const POST = async (request) => {
 
         return true
     } catch (error) {
+        console.log(error)
         return new Response("Failed to create user", { status: 500 })
 
     }

@@ -102,6 +102,7 @@ export default function Signin() {
                 }
                 else {
                     setPending(false);
+                    console.log(response)
                     alert("Error occured: ", response.message || response.statusText);
                 }
 
