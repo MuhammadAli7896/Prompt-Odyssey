@@ -12,17 +12,17 @@ export const POST = async (request) => {
 
         // if not, create a new document and save user in MongoDB
         if (!userExists) {
-            console.log("creating user ")
 
-            const user = await User.create({
+            let user = new User({
                 email,
-                username: name.replace(" ", "").toLowerCase(),
                 password,
+                username: name,
             });
 
-            console.log("user created");
+            user = await user.save();
+
             if (user) {
-                new Response({
+                return new Response({
                     _id: user._id,
                     username: user.username,
                     email: user.email,
@@ -38,7 +38,6 @@ export const POST = async (request) => {
 
         return true
     } catch (error) {
-        console.log("Failed to create");
         return new Response("Failed to create user", { status: 500 })
 
     }

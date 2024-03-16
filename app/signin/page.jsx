@@ -16,7 +16,6 @@ export default function Signin() {
     const [email, setEmail] = useState("");
     const [pending, setPending] = useState(false);
     const router = useRouter();
-    const { data: session } = useSession();
     const {user, setUser} = useContext(userContext);
 
     useEffect(() => {
@@ -51,8 +50,7 @@ export default function Signin() {
                 })
 
                 if (response.error) {
-                    console.log(response);
-                    alert(response.error);
+                    alert(response.error || response.statusText);
                     setPending(false);
                     return;
                 }
@@ -93,7 +91,7 @@ export default function Signin() {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ password, email, name })
+                    body: JSON.stringify({ password, email, name: name.replace(/\s/g, "").toLowerCase() })
                 }
                 );
 
@@ -104,8 +102,7 @@ export default function Signin() {
                 }
                 else {
                     setPending(false);
-                    console.log(response);
-                    alert("Error occured: " + response.message);
+                    alert("Error occured: ", response.message || response.statusText);
                 }
 
             } catch (error) {

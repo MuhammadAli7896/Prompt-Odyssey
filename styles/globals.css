@@ -126,7 +126,7 @@ input {
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply py-8 grid sm:grid-cols-2 sm:w-[390px] xl:w-[1150px] xl:grid-cols-3 xl:align-top xl:justify-items-start;
 }
 
 /* Feed Component */
@@ -158,7 +158,7 @@ input {
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter sm:my-5 md:w-[360px] w-full h-fit;
 }
 
 .flex-center {
