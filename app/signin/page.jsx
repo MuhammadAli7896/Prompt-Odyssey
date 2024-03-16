@@ -50,15 +50,15 @@ export default function Signin() {
                 })
 
                 if (response.error) {
-                    alert(response.error || response.statusText);
                     setPending(false);
+                    alert("Error occured: ", response.message || response.statusText);
                     return;
                 }
                 setUser(true);
                 router.replace("/");
             } catch (error) {
                 setPending(false);
-                alert("Error: " + error);
+                alert("Error: ", error);
                 setPassword("");
             }
 
