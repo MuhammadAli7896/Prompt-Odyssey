@@ -46,7 +46,7 @@ const UpdatePrompt = () => {
       });
 
       if (response.ok) {
-        router.push("/");
+        router.push("/profile");
       }
       else {
         console.error(response)
