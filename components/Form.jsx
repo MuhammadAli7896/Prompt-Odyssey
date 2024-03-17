@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
 
   const [tags, setTags] = useState([""]);
+  const lastTagRef = useRef(null);
+  const promptTextareaRef = useRef(null); // Reference to the textarea element
 
   // Update tags state when post.tag changes
   useEffect(() => {
@@ -29,6 +31,18 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
     setTags(newTags);
     setPost({ ...post, tag: newTags });
   };
+
+  useEffect(() => {
+    if (lastTagRef.current && tags.length > 1) {
+      lastTagRef.current.focus();
+    }
+  }, [tags]);
+
+  useEffect(() => {
+    if (promptTextareaRef.current) {
+      promptTextareaRef.current.focus(); 
+    }
+  }, []);
 
   return (
     <section className='w-full max-w-full flex-start flex-col mb-7'>
@@ -56,6 +70,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             required
             className='form_textarea '
             style={{caretColor: "black"}}
+            ref={promptTextareaRef}
           />
         </label>
 
@@ -76,6 +91,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 placeholder='#Tag'
                 required
                 className='form_input'
+                ref={index === tags.length - 1 ? lastTagRef : null}
               />
             ))}
             <div className="flex gap-2 mx-3 mt-3 -mb-4">
