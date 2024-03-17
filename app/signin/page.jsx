@@ -166,7 +166,7 @@ export default function Signin() {
                             <p className="text-blue-700 underline mx-1"><Link href="/signin" onClick={() => setLogin(!login)}>{!login ? "Login" : "Register an Account"}</Link></p>
                         </div>
                         <div>
-                            <button className="outline_btn" type="submit" onClick={submitHandler} disabled={pending} >{!pending ? (!login ? "Sign Up" : "Login") : (!login ? "Signing up" : "Logggin in")}</button>
+                            <button className="outline_btn" type="submit" onClick={submitHandler} disabled={pending} >{!pending ? (!login ? "Sign Up" : "Login") : (!login ? "Signing up" : "Logging in")}</button>
                         </div>
                     </div>
                     <div className="text-left flex justify-between -mx-2 mt-4">
