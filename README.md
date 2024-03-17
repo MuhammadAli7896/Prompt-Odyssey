@@ -31,9 +31,10 @@ Prompt Odyssey is a web application that allows users to create, share, and edit
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/MuhammadAli7896/Prompt-Odyssey.git
-```
+   ```
+   git clone https://github.com/MuhammadAli7896/Prompt-Odyssey.git 
+
+Make sure you have [git](https://git-scm.com/downloads) installed on your device.
 
 2. Navigate to the project directory:
 
@@ -73,9 +74,9 @@ npm run dev
 
 ## Deployment
 
-The application can be deployed to the Render hosting platform following these steps:
+The application can be deployed to the [Render](https://render.com) hosting platform following these steps:
 
-1. Create an account on [Render](https://render.com) and set up your project.
+1. Create an account on [Render](https://dashboard.render.com/register) and set up your project.
 2. Connect your GitHub repository to your Render project.
 3. Configure environment variables in Render similar to the local setup.
 4. Render will automatically build and deploy your application whenever changes are pushed to the connected GitHub repository.
@@ -84,3 +85,5 @@ The application can be deployed to the Render hosting platform following these s
 ### Contact
 
 #### LinkedIn: https://www.linkedin.com/in/muhammad-ali-a772a025b/
+#### Portfolio: https://muhammad-aliportfolio.netlify.app/
+<br />
