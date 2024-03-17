@@ -27,7 +27,7 @@ Prompt Odyssey is a web application that allows users to create, share, and edit
 - Node.js and npm installed on your machine. To install node.js visit **https://nodejs.org/en/download**
 - MongoDB database instance. To create mongodb instance visit **https://mongodb.com/atlas**
 
-### Installation
+### Setting up Project
 
 1. Clone the repository:
 
