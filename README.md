@@ -1,6 +1,6 @@
 # Prompt Odyssey
 
-<a href="https://example.com" target="_blank">Prompt Odyssey</a>
+<a href="https://prompt-odyssey.onrender.com/" target="_blank">Prompt Odyssey</a>
  is a web application that allows users to create, share, and edit AI prompts. These prompts are designed to be used with AI chatbots, aiding in various domains mentioned in the tags.
 
 ## Features
