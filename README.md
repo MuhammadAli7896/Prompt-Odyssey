@@ -1,6 +1,7 @@
 # Prompt Odyssey
 
-Prompt Odyssey is a web application that allows users to create, share, and edit AI prompts. These prompts are designed to be used with AI chatbots, aiding in various domains mentioned in the tags.
+<a href="https://example.com" target="_blank">Prompt Odyssey</a>
+ is a web application that allows users to create, share, and edit AI prompts. These prompts are designed to be used with AI chatbots, aiding in various domains mentioned in the tags.
 
 ## Features
 
