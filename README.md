@@ -28,27 +28,28 @@ Prompt Odyssey is a web application that allows users to create, share, and edit
 - MongoDB database instance. To create mongodb instance visit **https://mongodb.com/atlas**
 
 ### Setting up Project
+To get Prompt Odyssey up and running on your local machine, follow these simple steps:
 
-1. Clone the repository:
+### 1. Clone the repository:
 
-   ```
-   git clone https://github.com/MuhammadAli7896/Prompt-Odyssey.git 
-
+```git
+git clone https://github.com/MuhammadAli7896/Prompt-Odyssey.git 
+```
 Make sure you have [git](https://git-scm.com/downloads) installed on your device.
 
-2. Navigate to the project directory:
+### 2. Navigate to the project directory:
 
   ```bash
   cd Prompt-Odyssey
 ```
 
-3. Install dependencies:
+### 3. Install dependencies:
 
   ```bash
   npm i
 ```
 
-4. Configure environment variables:
+### 4. Configure environment variables:
 
 Create a `.env.local` file in the root directory and add the following environment variables:
 
@@ -65,12 +66,12 @@ MAX_LIMIT=
 MIN_LIMIT=
 ```
 
-5. Run the application server:
+### 5. Run the application server:
 ```bash
 npm run dev
 ```
 
-6. Visit http://localhost:3000 in your browser to access the application.
+Visit http://localhost:3000 in your browser to access the application.
 
 ## Deployment
 
