@@ -91,7 +91,7 @@ export default function Signin() {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ password, email, name: name.replace(/\s/g, "").toLowerCase() })
+                    body: JSON.stringify({ password, email, name })
                 }
                 );
 

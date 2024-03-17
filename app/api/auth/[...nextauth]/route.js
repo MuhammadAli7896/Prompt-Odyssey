@@ -12,8 +12,7 @@ export const generateRandomPassword = () => {
   return password;
 }
 
-async function login(credentials)
-{
+async function login(credentials) {
   try {
     await connectToDB();
     const user = await User.findOne({ email: credentials.email });
@@ -34,7 +33,7 @@ const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -55,17 +54,18 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
+      await connectToDB();
       // store the user id from MongoDB to session
       const sessionUser = await User.findOne({ email: session.user.email });
-      session.user.id = sessionUser._id.toString();
-      
+      // console.log(sessionUser)
+      if (sessionUser) {
+        session.user.id = sessionUser._id.toString();
+      }
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
-      try {
-
-        if(user)
-        {
+      try { 
+        if (user) {
           delete user.password;
           return user;
         }
@@ -76,12 +76,13 @@ const handler = NextAuth({
 
         // if not, create a new document and save user in MongoDB
         if (!userExists) {
-          await User.create({
+          const userCreated = await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
+            username: profile.name,
             image: profile.picture || profile.image,
             password: generateRandomPassword()
           });
+          console.log(userCreated);
         }
         return true
       } catch (error) {
