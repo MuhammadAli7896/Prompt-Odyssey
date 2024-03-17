@@ -84,6 +84,13 @@ const handler = NextAuth({
           });
           console.log(userCreated);
         }
+        if(userCreated)
+        {
+          console.log("user created successfully");
+        }
+        else {
+          console.log("user not created successfully");
+        }
         return true
       } catch (error) {
         console.log("Error checking if user exists: ", error.message);
