@@ -91,10 +91,6 @@ const handler = NextAuth({
       }
     }
   },
-  callbackTemporarySignedRoute: {
-    maxAge: 60 * 60, // One hour
-    // Increase timeout here as well
-  },
   secret: process.env.NEXTAUTH_SECRET,
 })
 
