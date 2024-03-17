@@ -9,7 +9,7 @@
 - **Create Prompts**: Users can create AI prompts tailored to specific domains or topics.
 - **Share Prompts**: Share prompts with others, allowing collaboration and sharing of ideas.
 - **Edit Prompts**: Collaboratively edit prompts to refine and improve them over time.
-- **Search Prompts**: Users can search prompts on the basis of tags, prompt or any other user's name and email.
+- **Search Prompts**: Users can search prompts on the basis of tags, prompt, username and email.
 - **Tagging System**: Organize prompts by associating them with relevant domains or topics.
 - **Responsive Design**: Utilizes Tailwind CSS for a responsive and visually appealing user interface across various devices.
 - **Reliability and Scalability**: Hosted on Render, Prompt Odyssey guarantees reliability and scalability, providing uninterrupted connectivity regardless of the scale of interaction.
